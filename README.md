@@ -8,4 +8,4 @@ Id | Name | LastName | Solary
 5 | Mark | Down | 120.000
 6 | Visual | Studio | 178.000
 :+1: | :+1: | :+1: |:+1:
-:green_apple:
+:green_apple: | :tangerine: | :lemon: | :strawberry:
