@@ -10,30 +10,13 @@ namespace UsersData.Controllers
 {
 	public class UsersDataController : Controller
 	{
-		List<Users> list = new List<Users>()
-		{
-			new Users
-			{
-				Id=10,
-				Name="Vahe",
-				Lastname="Sargsyan",
-				Solary=100000,
-
-			},
-			new Users
-			{
-				Id=10,
-				Name="Ani",
-				Lastname="Karapetyan",
-				Solary=150000,
-
-			}
-		};
+       static List<Users> list = new List<Users>();
+		
 		// GET: UsersData
 		public ActionResult Index()
 		{
 
-			return View("GetUsers",(object)list);
+			return View(list);
 		}
 
 		// GET: UsersData/Details/5
@@ -45,7 +28,7 @@ namespace UsersData.Controllers
 		//GET: UsersData/Create
 		public ActionResult Create()
 		{
-			return View("Index");
+			return View();
 		}
 
 		// POST: UsersData/Create
