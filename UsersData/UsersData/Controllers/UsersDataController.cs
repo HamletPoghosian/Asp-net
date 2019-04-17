@@ -10,13 +10,13 @@ namespace UsersData.Controllers
 {
 	public class UsersDataController : Controller
 	{
-       static List<Users> list = new List<Users>();
-		
+        DBforUser dbforUser = new DBforUser();
+        List<Users> user = new List<Users>();
 		// GET: UsersData
 		public ActionResult Index()
 		{
 
-			return View(list);
+			return View(user);
 		}
 
 		// GET: UsersData/Details/5
@@ -38,10 +38,10 @@ namespace UsersData.Controllers
 		{
 			try
 			{
-				list.Add(usersdata);
-				
+                dbforUser.Insert(usersdata);
 
-				return RedirectToAction(nameof(Index));
+
+                return RedirectToAction(nameof(Index));
 			}
 			catch
 			{
@@ -58,7 +58,7 @@ namespace UsersData.Controllers
 		// POST: UsersData/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(int id, IFormCollection collection)
+		public ActionResult Edit(int id, Users us)
 		{
 			try
 			{
@@ -85,7 +85,7 @@ namespace UsersData.Controllers
 		{
 			try
 			{
-				// TODO: Add delete logic here
+				
 
 				return RedirectToAction(nameof(Index));
 			}
