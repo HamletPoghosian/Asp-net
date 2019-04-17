@@ -53,6 +53,7 @@ namespace UsersData.Controllers
 		// GET: UsersData/Edit/5
 		public ActionResult Edit(int id)
 		{
+
 			return View();
 		}
 
@@ -74,20 +75,20 @@ namespace UsersData.Controllers
 		}
 
 		// GET: UsersData/Delete/5
-		public ActionResult Delete(int id)
+		public ActionResult Delete(Users user)
 		{
-			return View();
+			return View(user);
 		}
 
 		// POST: UsersData/Delete/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Delete(int id, IFormCollection collection)
+		public ActionResult Delete(int id, Users us)
 		{
 			try
 			{
-				
-
+                
+                dbforUser.Delete(us.Id);
 				return RedirectToAction(nameof(Index));
 			}
 			catch

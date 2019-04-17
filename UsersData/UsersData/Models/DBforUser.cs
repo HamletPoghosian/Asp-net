@@ -56,15 +56,15 @@ namespace UsersData.Models
 
                     while (reader.Read())
                     {
-                        us=new Users();
+                        us = new Users();
                         us.Id = int.Parse(reader[0].ToString());
                         us.Name = reader[1].ToString();
                         us.Lastname = reader[2].ToString();
                         us.Solary = int.Parse(reader[3].ToString());
                         users.Add(us);
                     }
-                    
-                    
+
+
 
 
                 }
@@ -75,9 +75,19 @@ namespace UsersData.Models
         public void Update(Users us)
         {
         }
-        public void Delete(Users us)
+        public void Delete(int id)
         {
+            string deleteQuery = @"DELETE FROM [Table] WHERE Id='" + id + "'";
+            using (SqlConnection connection = new SqlConnection(conectionString))
+            {
 
+                using (SqlCommand command = new SqlCommand(deleteQuery, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
         }
     }
 }
