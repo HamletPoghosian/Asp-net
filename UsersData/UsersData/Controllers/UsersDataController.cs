@@ -11,12 +11,13 @@ namespace UsersData.Controllers
 	public class UsersDataController : Controller
 	{
         DBforUser dbforUser = new DBforUser();
-        List<Users> user = new List<Users>();
+        Users user = new Users();
+
 		// GET: UsersData
 		public ActionResult Index()
 		{
 
-			return View(user);
+			return View(dbforUser.Select(user));
 		}
 
 		// GET: UsersData/Details/5

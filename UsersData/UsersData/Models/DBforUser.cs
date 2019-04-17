@@ -54,12 +54,17 @@ namespace UsersData.Models
                 {
                     SqlDataReader reader = command.ExecuteReader();
 
-                    reader.Read();
-                    us.Id = int.Parse(reader[0].ToString());
-                    us.Name = reader[1].ToString();
-                    us.Lastname = reader[2].ToString();
-                    us.Solary = int.Parse(reader[3].ToString());
-                    users.Add(us);
+                    while (reader.Read())
+                    {
+                        us=new Users();
+                        us.Id = int.Parse(reader[0].ToString());
+                        us.Name = reader[1].ToString();
+                        us.Lastname = reader[2].ToString();
+                        us.Solary = int.Parse(reader[3].ToString());
+                        users.Add(us);
+                    }
+                    
+                    
 
 
                 }
