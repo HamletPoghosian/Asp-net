@@ -64,7 +64,7 @@ namespace UsersData.Controllers
 		{
 			try
 			{
-				// TODO: Add update logic here
+				
 
 				return RedirectToAction(nameof(Index));
 			}
@@ -83,12 +83,14 @@ namespace UsersData.Controllers
 		// POST: UsersData/Delete/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Delete(int id, Users us)
+		public ActionResult Delete(int id, IFormCollection col)
 		{
 			try
 			{
-                
-                dbforUser.Delete(us.Id);
+
+                //HttpRequest htRec =(HttpRequest) col;
+                //id=Request["Id"]
+                //dbforUser.Delete(user.Id);
 				return RedirectToAction(nameof(Index));
 			}
 			catch
