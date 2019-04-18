@@ -54,7 +54,7 @@ namespace UsersData.Controllers
 		public ActionResult Edit(int id)
 		{
 
-			return View();
+			return View(id);
 		}
 
 		// POST: UsersData/Edit/5
@@ -64,8 +64,8 @@ namespace UsersData.Controllers
 		{
 			try
 			{
-				
 
+                dbforUser.Update( id);
 				return RedirectToAction(nameof(Index));
 			}
 			catch
@@ -75,9 +75,10 @@ namespace UsersData.Controllers
 		}
 
 		// GET: UsersData/Delete/5
-		public ActionResult Delete(Users user)
+		public ActionResult Delete(int id)
 		{
-			return View(user);
+            List<Users> us = dbforUser.Select(user).Where(i => i.Id == id).ToList();
+			return View(us[0]);
 		}
 
 		// POST: UsersData/Delete/5
@@ -90,7 +91,7 @@ namespace UsersData.Controllers
 
                 //HttpRequest htRec =(HttpRequest) col;
                 //id=Request["Id"]
-                //dbforUser.Delete(user.Id);
+                dbforUser.Delete(id);
 				return RedirectToAction(nameof(Index));
 			}
 			catch

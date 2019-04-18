@@ -72,7 +72,7 @@ namespace UsersData.Models
             }
 
         }
-        public void Update(Users us)
+        public void Update(int usersId)
         {
         }
         public void Delete(int id)
