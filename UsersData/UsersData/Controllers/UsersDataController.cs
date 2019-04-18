@@ -53,8 +53,8 @@ namespace UsersData.Controllers
 		// GET: UsersData/Edit/5
 		public ActionResult Edit(int id)
 		{
-
-			return View(id);
+            List<Users> us = dbforUser.Select(user).Where(i => i.Id == id).ToList();
+            return View(us[0]);
 		}
 
 		// POST: UsersData/Edit/5
@@ -64,8 +64,7 @@ namespace UsersData.Controllers
 		{
 			try
 			{
-
-                dbforUser.Update( id);
+                dbforUser.Update( us,id);
 				return RedirectToAction(nameof(Index));
 			}
 			catch
@@ -84,7 +83,7 @@ namespace UsersData.Controllers
 		// POST: UsersData/Delete/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Delete(int id, IFormCollection col)
+		public ActionResult Delete(int id, IFormCollection collection)
 		{
 			try
 			{

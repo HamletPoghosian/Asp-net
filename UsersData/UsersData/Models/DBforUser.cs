@@ -72,9 +72,24 @@ namespace UsersData.Models
             }
 
         }
-        public void Update(int usersId)
+        public void Update(Users us,int usersId)
         {
-        }
+            string updateQuery = @"UPDATE [Table] SET Id = @id, Name = @name,LastName=@lastname,Solary=@solary Where Id = '"+usersId+"'";
+            using (SqlConnection connection = new SqlConnection(conectionString))
+            {
+                using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                {
+                    
+                    connection.Open();
+                    command.Parameters.Add(new SqlParameter("@id", us.Id));
+                    command.Parameters.Add(new SqlParameter("Name", us.Name));
+                    command.Parameters.Add(new SqlParameter("LastName", us.Lastname));
+                    command.Parameters.Add(new SqlParameter("Solary", us.Solary));
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+                }
+            }
         public void Delete(int id)
         {
             string deleteQuery = @"DELETE FROM [Table] WHERE Id='" + id + "'";
