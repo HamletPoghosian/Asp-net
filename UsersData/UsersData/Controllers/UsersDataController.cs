@@ -17,7 +17,7 @@ namespace UsersData.Controllers
 		public ActionResult Index()
 		{
 
-			return View(dbforUser.Select(user));
+            return View(dbforUser.Select(user));
 		}
 
 		// GET: UsersData/Details/5
@@ -100,5 +100,11 @@ namespace UsersData.Controllers
 				return View();
 			}
 		}
-	}
+
+        public ActionResult Sort()
+        {
+          
+            return View("Index", dbforUser.Select(user).OrderByDescending(us => us.Solary));
+        }
+    }
 }

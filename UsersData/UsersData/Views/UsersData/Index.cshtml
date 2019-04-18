@@ -14,6 +14,7 @@
     <thead>
         <tr>
             <th>
+
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
@@ -23,7 +24,12 @@
                 @Html.DisplayNameFor(model => model.Lastname)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Solary)
+                @Html.DisplayNameFor(model => model.Solary)       
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                       <a  asp-action="Sort" ><i class="fa fa-sort-numeric-asc"></i></a>
+                    
+                
+                    
             </th>
             <th></th>
         </tr>
