@@ -23,7 +23,8 @@ namespace UsersData.Controllers
 		// GET: UsersData/Details/5
 		public ActionResult Details(int id)
 		{
-			return View();
+            List<Users> us = dbforUser.Select(user).Where(i => i.Id == id).ToList();
+            return View(us[0]);
 		}
 
 		//GET: UsersData/Create
@@ -39,6 +40,7 @@ namespace UsersData.Controllers
 		{
 			try
 			{
+
                 dbforUser.Insert(usersdata);
 
 
